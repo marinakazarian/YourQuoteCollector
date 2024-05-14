@@ -16,7 +16,7 @@
 //     });
 //     function applyToolbarColor(color) {
 //         chrome.tabs.query({ active: true, currentWindow: true}, function (tabs) {
-//             chrome.tabs.executeScript(tabs[0].id, {
+//             chrome.scripting.executeScript(tabs[0].id, {
 //                 code: `document.querySelector("body").style.backgroundColor = "${color}";`
 //             });
 //         });
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
     function applyStyles(backgroundColor, backgroundImage) {
       chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        chrome.tabs.executeScript(
+        chrome.scripting.executeScript(
           tabs[0].id,
           {
             code: `
