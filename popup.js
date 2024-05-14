@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
     function applyStyles(backgroundColor, toolbarColor, shape, pattern) {
       chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        chrome.tabs.executeScript(
+        chrome.scripting.executeScript(
           tabs[0].id,
           {
             code: `
