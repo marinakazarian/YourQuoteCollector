@@ -1,11 +1,13 @@
 {
-    "manifest_version": 3,
-    "name": "Theme Styler",
-    "version": "1.0",
-    "description": "Customize your Chrome theme",
-    "permissions": ["storage", "declarativeContent", "activeTab", "scripting"],
-    "action": {
-        "default_icon": "icon.png",
-        "default_popup": "popup.html"
-    }
+  "manifest_version": 3,
+  "name": "Wikipedia Highlight Search",
+  "version": "1.0",
+  "description": "Easily search Wikipedia for highlighted text",
+  "permissions": ["contextMenus", "tabs"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": "icon.png"
+  }
 }
