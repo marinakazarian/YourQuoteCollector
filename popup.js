@@ -27,31 +27,29 @@ document.addEventListener('DOMContentLoaded', function () {
   
     applyButton.addEventListener('click', function () {
       var backgroundColor = document.getElementById('backgroundColor').value;
-      var fileInput = document.getElementById('backgroundImage');
-      var file = fileInput.files[0];
+      var toolbarColor = document.getElementById('toolbarColor').value;
+      var shape = document.getElementById('shape').value;
+      var pattern = document.getElementById('pattern').value;
   
-      if (file) {
-        var reader = new FileReader();
-        reader.onloadend = function () {
-          var imageDataUrl = reader.result;
-          applyStyles(backgroundColor, imageDataUrl);
-        };
-        reader.readAsDataURL(file);
-      } else {
-        applyStyles(backgroundColor, null);
-      }
+      applyStyles(backgroundColor, toolbarColor, shape, pattern);
     });
   
-    function applyStyles(backgroundColor, backgroundImage) {
+    function applyStyles(backgroundColor, toolbarColor, shape, pattern) {
       chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        chrome.scripting.executeScript(
+        chrome.tabs.executeScript(
           tabs[0].id,
           {
             code: `
               document.body.style.backgroundColor = "${backgroundColor}";
+              document.querySelector('header').style.backgroundColor = "${toolbarColor}";
               ${
-                backgroundImage
-                  ? `document.body.style.backgroundImage = "url('${backgroundImage}')";`
+                shape !== 'none'
+                  ? `document.querySelector('header').style.borderRadius = "${shape}";`
+                  : ''
+              }
+              ${
+                pattern !== 'none'
+                  ? `document.querySelector('header').style.backgroundImage = "url('${getPatternUrl(pattern)}')";`
                   : ''
               }
             `
@@ -59,4 +57,18 @@ document.addEventListener('DOMContentLoaded', function () {
         );
       });
     }
-  }); 
+  
+    function getPatternUrl(pattern) {
+      switch (pattern) {
+        case 'stripes':
+          return 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAIklEQVR42mP8z/CfAQYTgPEj7A4EIQLNB2NBQTGigAAAABJRU5ErkJggg==';
+        case 'dots':
+          return 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAATElEQVR42mP8/v7z7gMQJQA+2mBqDiBSMMYY4r6CsDDElBMNjG8DYjICJJvIZiDIwhcAKGNUEJhJQSwAAAAAAAAAAAAAAAMDuAU1aAgAEk5l1sAAAAASUVORK5CYII=';
+        case 'checkerboard':
+          return 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAiklEQVR42mP4//8/AyUYwAop9DvATCYLG9gI5oj0gEoGEigOAIwCsUAJB6SWAnAUgFzABMCvSwGxgGgOGCqFIAAe9AAeLQdwGg4Y6oUUgAJDkBEoD4If2AAAAAElFTkSuQmCC';
+        default:
+          return '';
+      }
+    }
+  });
+  

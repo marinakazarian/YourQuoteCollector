@@ -34,8 +34,24 @@
   <label for="backgroundColor">Background Color:</label>
   <input type="color" id="backgroundColor" value="#ffffff">
   <br>
-  <label for="backgroundImage">Background Image:</label>
-  <input type="file" id="backgroundImage" accept="image/*">
+  <label for="toolbarColor">Toolbar Color:</label>
+  <input type="color" id="toolbarColor" value="#007bff">
+  <br>
+  <label for="shape">Shape:</label>
+  <select id="shape">
+    <option value="none">None</option>
+    <option value="circle">Circle</option>
+    <option value="square">Square</option>
+    <option value="triangle">Triangle</option>
+  </select>
+  <br>
+  <label for="pattern">Pattern:</label>
+  <select id="pattern">
+    <option value="none">None</option>
+    <option value="stripes">Stripes</option>
+    <option value="dots">Dots</option>
+    <option value="checkerboard">Checkerboard</option>
+  </select>
   <br>
   <button id="applyButton">Apply Theme</button>
   <script src="popup.js"></script>
