@@ -37,23 +37,19 @@ document.addEventListener('DOMContentLoaded', function () {
     function applyStyles(backgroundColor, toolbarColor, shape, pattern) {
       chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         chrome.scripting.executeScript(
-          tabs[0].id,
-          {
-            code: `
-              document.body.style.backgroundColor = "${backgroundColor}";
-              document.querySelector('header').style.backgroundColor = "${toolbarColor}";
-              ${
-                shape !== 'none'
-                  ? `document.querySelector('header').style.borderRadius = "${shape}";`
-                  : ''
-              }
-              ${
-                pattern !== 'none'
-                  ? `document.querySelector('header').style.backgroundImage = "url('${getPatternUrl(pattern)}')";`
-                  : ''
-              }
-            `
+          { target: { tabId: tabs[0].id }, function() {
+            document.body.style.backgroundColor = "${backgroundColor}";
+            document.querySelector('header').style.backgroundColor = "${toolbarColor}";
+            if (shape !== 'none') {
+                document.querySelector('header').style.borderRadius = "${shape}";
+            }
+
+            if (pattern !== 'none') {
+                document.querySelector('header').style.backgroundImage = "url('${getPatternUrl(pattern)}')";
+            }
+            
           }
+        }
         );
       });
     }
