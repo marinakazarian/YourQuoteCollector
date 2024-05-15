@@ -8,7 +8,7 @@ chrome.runtime.onInstalled.addListener(() => {
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === 'addQuote') {
-    saveQuote(info.selectionText);
+    saveQuote(concat("\"", info.selectionText, "\""));
   }
 });
 
