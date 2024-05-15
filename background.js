@@ -1,11 +1,9 @@
 chrome.runtime.onInstalled.addListener(() => {
-  console.log('Quote Collector installed');
-});
-
-chrome.contextMenus.create({
-  id: 'addQuote',
-  title: 'Add to Quote List',
-  contexts: ['selection']
+  chrome.contextMenus.create({
+    id: 'addQuote',
+    title: 'Add to Quote List',
+    contexts: ['selection']
+  });
 });
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
