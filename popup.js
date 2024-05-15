@@ -36,6 +36,12 @@ function submitQuote() {
   }
 }
 
+function handleKeyPress(event) {
+  if (event.key === 'Enter') {
+    submitQuote();
+  }
+}
+
 function saveQuote(quote) {
   chrome.storage.sync.get(['quotes'], (result) => {
     const quoteList = result.quotes || [];
