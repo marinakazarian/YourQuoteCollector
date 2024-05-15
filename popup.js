@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   loadQuotes();
   document.getElementById('submit-quote-button').addEventListener('click', submitQuote);
+  document.getElementById('submit-quote-button').addEventListener('click', submitQuote);
 });
 
 function loadQuotes() {
@@ -30,7 +31,7 @@ function submitQuote() {
   const quote = quoteInputField.value.trim();
 
   if (quote !== '') {
-    saveQuote(quote);
+    saveQuote("\"".concat(quote, "\""));
     quoteInputField.value = ''; // Clear the input field
   }
 }

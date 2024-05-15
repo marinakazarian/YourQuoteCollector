@@ -6,28 +6,17 @@ body {
   }
   
   #quote-list {
-    max-height: 1000px;
+    max-height: 1200px;
     overflow-y: auto;
   }
   
   .quote-item {
     padding: 5px;
     background-color: #ffffff;
-    font: 15px 'Courier New', monospace;
+    font: 17px 'Courier New', monospace;
   }
   
   .delete-button {
     margin-left: 5px;
-    padding: 5px 5px;
-    background-color: #cecece;
-    color: rgb(0, 0, 0);
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font: 15px 'Courier New', monospace;
-  }
-  
-  .delete-button:hover {
-    background-color: #737373;
   }
   
