@@ -1,15 +1,13 @@
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.contextMenus.create({
-    id: 'addQuote',
-    title: 'Add to Quote List',
-    contexts: ['selection']
-  });
+chrome.contextMenus.create({
+  id: 'addQuote',
+  title: 'Add to Quote List',
+  contexts: ['selection']
+});
 
-  chrome.contextMenus.onClicked.addListener((info, tab) => {
-    if (info.menuItemId === 'addQuote') {
-      saveQuote(info.selectionText);
-    }
-  });
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  if (info.menuItemId === 'addQuote') {
+    saveQuote(info.selectionText);
+  }
 });
 
 function saveQuote(quote) {
