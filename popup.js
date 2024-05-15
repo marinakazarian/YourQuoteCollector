@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   loadQuotes();
   document.getElementById('submit-quote-button').addEventListener('click', submitQuote);
-  document.getElementById('submit-quote-button').addEventListener('click', submitQuote);
+  document.getElementById('quote-input-field').addEventListener('keypress', handleKeyPress);
 });
 
 function loadQuotes() {
