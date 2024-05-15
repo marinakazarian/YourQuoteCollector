@@ -1,7 +1,9 @@
-chrome.contextMenus.create({
-  id: 'addQuote',
-  title: 'Add to Quote List',
-  contexts: ['selection']
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.contextMenus.create({
+    id: 'addQuote',
+    title: 'Add to Quote List',
+    contexts: ['selection']
+  });
 });
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {

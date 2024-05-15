@@ -3,7 +3,7 @@
   "name": "Quote Collector",
   "version": "1.0",
   "description": "Save selected text as quotes.",
-  "permissions": ["activeTab", "storage"],
+  "permissions": ["activeTab", "storage", "contextMenus"],
   "background": {
     "service_worker": "background.js"
   },
