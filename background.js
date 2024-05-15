@@ -1,19 +1,11 @@
-// Background script - background.js
+let quotes = [];
 
-// Listen for context menu item clicks
-chrome.contextMenus.onClicked.addListener((info, tab) => {
-    // Check if the clicked menu item is the one we added
-    if (info.menuItemId === "addToQuoteList") {
-      // Open a new tab with the Wikipedia page for the highlighted text
-      chrome.tabs.sendMessage(tab.id, {action: "addQuote", selection: info.selectionText});
-    }
-  });
-  
-  // Create context menu item
-  chrome.runtime.onInstalled.addListener(() => {
-    chrome.contextMenus.create({
-      id: "addToQuoteList",
-      title: "Add to Quote List",
-      contexts: ["selection"],
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+  if (message.action === "addQuote") {
+    let quote = message.quote;
+    quotes.push(quote);
+    chrome.storage.local.set({quotes: quotes}, function() {
+      console.log("Quote added: " + quote);
     });
-  });
+  }
+});
