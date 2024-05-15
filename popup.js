@@ -1,16 +1,8 @@
-document.addEventListener("DOMContentLoaded", function () {
-  loadQuotes();
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+  if (message.action === "addQuote") {
+    var quote = message.selection;
+    var listItem = document.createElement("li");
+    listItem.textContent = quote;
+    document.getElementById("quoteList").appendChild(listItem);
+  }
 });
-
-function loadQuotes() {
-  chrome.storage.sync.get("quotes", function (data) {
-    const quotes = data.quotes || [];
-    const quoteList = document.getElementById("quoteList");
-    quoteList.innerHTML = "";
-    quotes.forEach(function (quote) {
-      const li = document.createElement("li");
-      li.textContent = quote;
-      quoteList.appendChild(li);
-    });
-  });
-}
