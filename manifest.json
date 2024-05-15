@@ -3,10 +3,7 @@
   "name": "Quote Collector",
   "version": "1.0",
   "description": "Collect a list of your quotes.",
-  "permissions": ["activeTab", "storage"],
-  "background": {
-    "service_worker": "background.js"
-  },
+  "permissions": ["activeTab", "storage"], 
   "action": {
     "default_popup": "popup.html",
     "default_icon": "icon.png"
