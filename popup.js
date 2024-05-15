@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   loadQuotes();
+  document.getElementById('submit-quote-button').addEventListener('click', submitQuote);
 });
 
 function loadQuotes() {
@@ -20,6 +21,27 @@ function loadQuotes() {
 
       quoteItem.appendChild(deleteButton);
       quoteListContainer.appendChild(quoteItem);
+    });
+  });
+}
+
+function submitQuote() {
+  const quoteInputField = document.getElementById('quote-input-field');
+  const quote = quoteInputField.value.trim();
+
+  if (quote !== '') {
+    saveQuote(quote);
+    quoteInputField.value = ''; // Clear the input field
+  }
+}
+
+function saveQuote(quote) {
+  chrome.storage.sync.get(['quotes'], (result) => {
+    const quoteList = result.quotes || [];
+    quoteList.push(quote);
+    chrome.storage.sync.set({ 'quotes': quoteList }, () => {
+      console.log('Quote added: ', quote);
+      loadQuotes(); // Reload quotes after addition
     });
   });
 }
