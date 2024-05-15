@@ -4,32 +4,8 @@
   "version": "1.0",
   "description": "Save selected text as quotes.",
   "permissions": ["activeTab", "storage"],
-  "background": {
-    "service_worker": "background.js"
-  },
   "action": {
     "default_popup": "popup.html",
     "default_icon": "icon.png"
-  },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
-    }
-  ],
-  "commands": {
-    "addQuoteCommand": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+A"
-      },
-      "description": "Add selected text to quote list"
-    }
-  },
-  "context_menus": {
-    "addQuoteContextMenu": {
-      "title": "Add to Quote List",
-      "contexts": ["selection"],
-      "command": "addQuoteCommand"
-    }
   }
 }

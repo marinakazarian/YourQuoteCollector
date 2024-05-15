@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 10px;
+  }
+  
+  #quote-list {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  .quote-item {
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+  }
+  
+  .quote-item:hover {
+    background-color: #e0e0e0;
+  }
+  
