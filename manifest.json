@@ -1,13 +1,14 @@
 {
   "manifest_version": 3,
-  "name": "Wikipedia Highlight Search",
+  "name": "Quote Collector",
   "version": "1.0",
-  "description": "Easily search Wikipedia for highlighted text",
-  "permissions": ["contextMenus", "tabs"],
+  "description": "Collect a list of your quotes.",
+  "permissions": ["activeTab", "storage"],
   "background": {
     "service_worker": "background.js"
   },
   "action": {
+    "default_popup": "popup.html",
     "default_icon": "icon.png"
   }
 }
