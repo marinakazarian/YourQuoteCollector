@@ -72,17 +72,25 @@ function handleSearchKeyPress(event) {
   }
 }
 
+// function searchQuotes() {
+//   const searchInput = document.getElementById('search-input');
+//   const searchText = searchInput.value.toLowerCase();
+
+//   const quoteItems = document.getElementsByClassName('quote-item');
+//   Array.from(quoteItems).forEach((quoteItem) => {
+//     const quoteText = quoteItem.textContent.toLowerCase();
+//     if (quoteText.includes(searchText)) {
+//       quoteItem.style.display = 'block';
+//     } else {
+//       quoteItem.style.display = 'none';
+//     }
+//   });
+// }
+
 function searchQuotes() {
   const searchInput = document.getElementById('search-input');
-  const searchText = searchInput.value.toLowerCase();
+  const searchText = searchInput.value.trim();
 
-  const quoteItems = document.getElementsByClassName('quote-item');
-  Array.from(quoteItems).forEach((quoteItem) => {
-    const quoteText = quoteItem.textContent.toLowerCase();
-    if (quoteText.includes(searchText)) {
-      quoteItem.style.display = 'block';
-    } else {
-      quoteItem.style.display = 'none';
-    }
-  });
+  // Redirect to search results page with query string
+  window.location.href = `search.html?q=${encodeURIComponent(searchText)}`;
 }
