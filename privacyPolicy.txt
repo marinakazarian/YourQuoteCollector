@@ -1,0 +1,5 @@
+The "Your Quote Collector" extension collects text data from webpages if the user selects text, right clicks, and adds that text to their quote list.
+
+The extension also uses stored information to maintain the list of quotes.
+
+Data will not be shared.
