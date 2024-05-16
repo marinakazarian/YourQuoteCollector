@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('quote-input-field').addEventListener('keypress', handleKeyPress);
   document.getElementById('search-input').addEventListener('keypress', handleSearchKeyPress);
   document.getElementById('search-submit-button').addEventListener('click', searchQuotes);
+  document.getElementById('random-quote-button').addEventListener('click', showRandomQuote);
 });
 
 function loadQuotes() {
@@ -72,25 +73,21 @@ function handleSearchKeyPress(event) {
   }
 }
 
-// function searchQuotes() {
-//   const searchInput = document.getElementById('search-input');
-//   const searchText = searchInput.value.toLowerCase();
-
-//   const quoteItems = document.getElementsByClassName('quote-item');
-//   Array.from(quoteItems).forEach((quoteItem) => {
-//     const quoteText = quoteItem.textContent.toLowerCase();
-//     if (quoteText.includes(searchText)) {
-//       quoteItem.style.display = 'block';
-//     } else {
-//       quoteItem.style.display = 'none';
-//     }
-//   });
-// }
-
 function searchQuotes() {
   const searchInput = document.getElementById('search-input');
   const searchText = searchInput.value.trim();
 
   // Redirect to search results page with query string
   window.location.href = `search.html?q=${encodeURIComponent(searchText)}`;
+}
+
+function showRandomQuote() {
+  chrome.storage.sync.get(['quotes'], (result) => {
+    const quoteList = result.quotes || [];
+    const randomIndex = Math.floor(Math.random() * quoteList.length);
+    const randomQuote = quoteList[randomIndex];
+
+    // Redirect to random quote page with quote string
+    window.location.href = `random.html?quote=${encodeURIComponent(randomQuote)}`;
+  });
 }

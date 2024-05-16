@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Quote Collector",
+  "name": "Your Quote Collector",
   "version": "1.0",
   "description": "Save selected text as quotes.",
   "permissions": ["activeTab", "storage", "contextMenus"],
