@@ -2,7 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
   loadQuotes();
   document.getElementById('submit-quote-button').addEventListener('click', submitQuote);
   document.getElementById('quote-input-field').addEventListener('keypress', handleKeyPress);
-  document.getElementById('search-input').addEventListener('input', searchQuotes);
+  document.getElementById('search-input').addEventListener('keypress', handleSearchKeyPress);
+  document.getElementById('search-submit-button').addEventListener('click', searchQuotes);
 });
 
 function loadQuotes() {
@@ -63,6 +64,12 @@ function deleteQuote(index) {
       loadQuotes(); // Reload quotes after deletion
     });
   });
+}
+
+function handleSearchKeyPress(event) {
+  if (event.key === 'Enter') {
+    searchQuotes();
+  }
 }
 
 function searchQuotes() {
