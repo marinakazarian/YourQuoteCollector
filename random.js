@@ -13,7 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
     quoteItem.textContent = randomQuote;
     quoteItem.classList.add('quote-item');
 
-    randomQuoteContainer.appendChild(quoteItem);
+    if (randomQuote) {
+        randomQuoteContainer.appendChild(quoteItem);
+    }
+    else {
+        randomQuoteContainer.appendChild("No quotes in the list to pick from.")
+    }
 
     // randomQuoteContainer.textContent = randomQuote;
   }
