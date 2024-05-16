@@ -1,6 +1,6 @@
-## Chrome Extension: Your Quote Collector
+# Chrome Extension: Your Quote Collector
 
-# How the extension works
+## How the extension works
 
 Save selected text to your personal quote list using right click --> Add to Quote List.
 
