@@ -10,14 +10,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const randomQuoteContainer = document.getElementById('random-quote');
     randomQuoteContainer.innerHTML = '';
     const quoteItem = document.createElement('div');
-    quoteItem.textContent = randomQuote;
-    quoteItem.classList.add('quote-item');
+    
 
     if (randomQuote) {
+        quoteItem.textContent = randomQuote;
+        quoteItem.classList.add('quote-item');
         randomQuoteContainer.appendChild(quoteItem);
     }
     else {
-        randomQuoteContainer.appendChild("No quotes in the list to pick from.")
+        quoteItem.textContent = "No quotes in the list to pick from.";
+        quoteItem.classList.add('quote-item');
+        randomQuoteContainer.appendChild(quoteItem)
     }
 
     // randomQuoteContainer.textContent = randomQuote;
