@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   loadQuotes();
   document.getElementById('submit-quote-button').addEventListener('click', submitQuote);
   document.getElementById('quote-input-field').addEventListener('keypress', handleKeyPress);
+  document.getElementById('search-input').addEventListener('input', searchQuotes);
 });
 
 function loadQuotes() {
@@ -61,5 +62,20 @@ function deleteQuote(index) {
       console.log('Quote deleted at index', index);
       loadQuotes(); // Reload quotes after deletion
     });
+  });
+}
+
+function searchQuotes() {
+  const searchInput = document.getElementById('search-input');
+  const searchText = searchInput.value.toLowerCase();
+
+  const quoteItems = document.getElementsByClassName('quote-item');
+  Array.from(quoteItems).forEach((quoteItem) => {
+    const quoteText = quoteItem.textContent.toLowerCase();
+    if (quoteText.includes(searchText)) {
+      quoteItem.style.display = 'block';
+    } else {
+      quoteItem.style.display = 'none';
+    }
   });
 }
