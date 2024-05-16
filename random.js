@@ -11,8 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     randomQuoteContainer.innerHTML = '';
     const quoteItem = document.createElement('div');
     
-
-    if (randomQuote) {
+    if (randomQuote != "undefined") {
         quoteItem.textContent = randomQuote;
         quoteItem.classList.add('quote-item');
         randomQuoteContainer.appendChild(quoteItem);
@@ -23,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
         randomQuoteContainer.appendChild(quoteItem)
     }
 
-    // randomQuoteContainer.textContent = randomQuote;
   }
   
   function goBack() {

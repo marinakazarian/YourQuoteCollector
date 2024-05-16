@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Your Quote Collector",
   "version": "1.0",
-  "description": "Save selected text as quotes.",
+  "description": "Save selected text as quotes or input your own. Display quotes randomly to remind you of past motivational messages.",
   "permissions": ["activeTab", "storage", "contextMenus"],
   "background": {
     "service_worker": "background.js"
